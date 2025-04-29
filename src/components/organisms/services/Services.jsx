@@ -6,6 +6,7 @@ import UserInfo from '../../atoms/userinfo/UserInfo';
 
 function Services() {
   let total = 0;
+  const clients = []
 
   const cards = data.map((item, i) =>{
     return <Card key={i} data={item}></Card>
@@ -13,13 +14,15 @@ function Services() {
 
   function onSubmit(e){
     e.preventDefault();
-    const {checkbox1, checkbox2, checkbox3} = e.target
+    const {checkbox1, checkbox2, checkbox3, name, phone, email} = e.target
     const checkboxList = [[checkbox1, 1], [checkbox2, 2], [checkbox3,3]]
     const selectedServices = [];
     checkboxList.map(item => {
       item[0].checked && selectedServices.push(item[1])
     })
     console.log(selectedServices)
+    clients.push([name.value, phone.value, email.value, selectedServices])
+    console.log(clients)
   }
 
   return (

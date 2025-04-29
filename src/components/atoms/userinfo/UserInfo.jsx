@@ -8,7 +8,7 @@ function UserInfo() {
         <h3>Demanar Pressupost</h3>
         <input type="text" className={`col-4 m-auto mb-3`} placeholder="Nom" name ="name" pattern='[a-zA-ZñÑçÇáàÁÀéèÉÈíÍóòÓÒúÚ ]+' minLength={3} maxLength={15} required/>
         <input type="number" className={`col-4 m-auto mb-3`} placeholder='Telèfon' name="phone" min="111111111" max="999999999" required/>
-        <input type="email" className={`col-4 m-auto mb-3`} placeholder='Email' required/>
+        <input type="email" className={`col-4 m-auto mb-3`} placeholder='Email'  name ="email" required/>
     </div>
     </>
   )
