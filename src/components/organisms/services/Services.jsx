@@ -2,9 +2,15 @@ import React from 'react'
 import {data} from '../../../assets/data/data'
 import Card from '../../atoms/card/Card'
 import './services.css'
+import UserInfo from '../../atoms/userinfo/UserInfo';
 
 function Services() {
   let total = 0;
+
+  const cards = data.map((item, i) =>{
+    return <Card key={i} data={item}></Card>
+  })
+
   function onSubmit(e){
     e.preventDefault();
     const {checkbox1, checkbox2, checkbox3} = e.target
@@ -15,15 +21,13 @@ function Services() {
     })
     console.log(selectedServices)
   }
-  const cards = data.map((item, i) =>{
-    return <Card key={i} data={item}></Card>
-  })
 
   return (
     <>
     <form onSubmit={onSubmit}>
     {cards}
     <div className='col-10'><h3 className='text-end'>Total = {total}</h3></div>
+    <UserInfo></UserInfo>
     <button type='submit'>Submit</button>
     </form>
     </>
