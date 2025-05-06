@@ -1,7 +1,27 @@
 import React from 'react'
+import PagesAndLanguages from '../pagesAndLanguages/PagesAndLanguages'
 
 
 function Card(props) {
+    const displayLanguages = <div className='row mt-3'>
+        <div className='col-12 mt-3'>
+            <div className='col-12 px-0 px-md-3'>
+                <PagesAndLanguages></PagesAndLanguages>
+            </div>
+        </div>
+    </div>
+
+
+    // {isWebSelected && data.id === 3 && (
+    //     <div className="row mt-3">
+    //         <div className="col-12 px-0 px-md-3">
+    //             <div className="web-configurator">
+    //                 <WebConfigurator webConfig={webConfig} onConfigChange={onConfigChange} />
+    //             </div>
+    //         </div>
+    //     </div>
+    // )}
+
   return (
     <div className={`card rounded-4 shadow mb-3 p-4 col-10 m-auto`}>
       <div className="row g-3 align-items-center">
@@ -31,6 +51,7 @@ function Card(props) {
                         </label>
                     </div>
                 </div>
+                {props.data.id === 3 && props.webSelected && displayLanguages}
             </div>
     </div>
   )

@@ -7,16 +7,23 @@ import Total from '../../atoms/total/Total';
 
 function Services() {
   const clients = []
+  const [webSelected, setWebSelected] = useState(false)
+  
   const cards = data.map((item, i) =>{
-    return <Card key={i} data={item} handleClick={handleClick}></Card>
+    return <Card key={i} data={item} handleClick={handleClick} webSelected={webSelected}></Card>
   })
-
+  
   let [selectedServices, setSelectedServices] = useState([])
   let [total, setTotal] = useState(0)
   let newSum = 0;
+  
   function handleClick (event){
     const value = parseInt(event.target.value);
     let myPromise = null;
+
+    if (event.target.value == 500){
+      setWebSelected(!webSelected)
+    }
 
     if (event.target.checked === true){
       newSum += parseInt(event.target.value);
