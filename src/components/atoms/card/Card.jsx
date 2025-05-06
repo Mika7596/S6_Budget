@@ -24,6 +24,8 @@ function Card(props) {
                             type="checkbox"
                             id={`data-${props.data.id}`}
                             name = {`checkbox${props.data.id}`}
+                            onChange = {props.handleClick}
+                            value = {props.data.price}
                         />
                         <label className="form-check-label" htmlFor={`data-${props.data.id}`}>
                         </label>

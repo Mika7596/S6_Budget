@@ -1,16 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {data} from '../../../assets/data/data'
 import Card from '../../atoms/card/Card'
 import './services.css'
 import UserInfo from '../../atoms/userinfo/UserInfo';
+import Total from '../../atoms/total/Total';
 
 function Services() {
-  let total = 0;
   const clients = []
-
   const cards = data.map((item, i) =>{
-    return <Card key={i} data={item}></Card>
+    return <Card key={i} data={item} handleClick={handleClick}></Card>
   })
+
+  let [selectedServices, setSelectedServices] = useState([])
+  let [total, setTotal] = useState(0)
+  let newSum = 0;
+  function handleClick (event){
+    const value = parseInt(event.target.value);
+    let myPromise = null;
+
+    if (event.target.checked === true){
+      newSum += parseInt(event.target.value);
+      // myPromise = new Promise (function (resolve) {
+      //   setSelectedServices([...selectedServices, value]);
+      //   newSum = selectedServices.reduce((acc, p) =>{ return acc + p}, 0);
+      //   resolve(newSum)  
+      // })
+      
+    } else{
+      newSum -= parseInt(event.target.value);
+      // myPromise = new Promise(function (resolve){
+      //   const filteredList = selectedServices.filter (item => item !== value)
+      //   setSelectedServices(filteredList)
+      //   newSum = selectedServices.reduce((acc, p) =>{ return acc + p}, 0);
+      //   resolve(newSum)
+      //   document.getElementById("priceBox").innerText = `El valor total és ${newSum}`
+      // })
+    }
+    // myPromise.then(newSum => {setTotal(newSum)})
+    document.getElementById("priceBox").innerText = `El valor total és ${newSum}`
+    //setTotal(newSum)
+    //console.log(total)
+  }
 
   function onSubmit(e){
     e.preventDefault();
@@ -20,18 +50,19 @@ function Services() {
     checkboxList.map(item => {
       item[0].checked && selectedServices.push(item[1])
     })
-    console.log(selectedServices)
     clients.push([name.value, phone.value, email.value, selectedServices])
     console.log(clients)
   }
+
 
   return (
     <>
     <form onSubmit={onSubmit}>
     {cards}
-    <div className='col-10'><h3 className='text-end'>Total = {total}</h3></div>
+    <div className='col-10'><h3 className='text-end' id='priceBox'>Total = {total}</h3></div>
+    <Total total={total}></Total>
     <UserInfo></UserInfo>
-    <button type='submit'>Submit</button>
+    <button type='submit'>Enviar</button>
     </form>
     </>
   )
