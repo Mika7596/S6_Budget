@@ -42,7 +42,7 @@ function Card(props) {
                         <input
                             className="form-check-input me-2 border-success"
                             type="checkbox"
-                            id={`data-${props.data.id}`}
+                            id={props.data.id}
                             name = {`checkbox${props.data.id}`}
                             onChange = {props.handleClick}
                             value = {props.data.price}

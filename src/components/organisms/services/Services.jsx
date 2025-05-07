@@ -16,25 +16,30 @@ function Services() {
   let [selectedServices, setSelectedServices] = useState([])
   let [total, setTotal] = useState(0)
   let newSum = 0;
-  
+console.log(total);
+
   function handleClick (event){
     const value = parseInt(event.target.value);
     let myPromise = null;
+console.log(event.target.value);
 
-    if (event.target.value == 500){
-      setWebSelected(!webSelected)
-    }
+    // if (event.target.id == "data-3"){
+    //   setWebSelected(!webSelected)
+    // }
 
     if (event.target.checked === true){
-      newSum += parseInt(event.target.value);
+      newSum += value
+     
       // myPromise = new Promise (function (resolve) {
       //   setSelectedServices([...selectedServices, value]);
       //   newSum = selectedServices.reduce((acc, p) =>{ return acc + p}, 0);
       //   resolve(newSum)  
       // })
       
-    } else{
-      newSum -= parseInt(event.target.value);
+    } else if (event.target.checked === false){
+      newSum -= value;
+      setWebSelected(false)
+      
       // myPromise = new Promise(function (resolve){
       //   const filteredList = selectedServices.filter (item => item !== value)
       //   setSelectedServices(filteredList)
@@ -44,8 +49,8 @@ function Services() {
       // })
     }
     // myPromise.then(newSum => {setTotal(newSum)})
-    document.getElementById("priceBox").innerText = `El valor total és ${newSum}`
-    //setTotal(newSum)
+    // document.getElementById("priceBox").innerText = `El valor total és ${newSum}`
+    setTotal(newSum)
     //console.log(total)
   }
 
