@@ -3,7 +3,8 @@
     text-align: center;
     margin: 50px auto;
     padding: 3%;
-    background-image: url(../../assets/header.jpg);
+    border-radius: 10px;
+    background-image: url(../../../assets/header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
