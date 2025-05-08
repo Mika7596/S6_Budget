@@ -35,12 +35,12 @@ function Services() {
 
   return (
     <>
-    <form>
+    {/* <form> */}
     {cards}
     <div className='col-10'><h3 className='text-end' id='priceBox'>Total = {total}</h3></div>
-    <UserInfo></UserInfo>
-    <button type='submit'>Enviar</button>
-    </form>
+    {/* <UserInfo></UserInfo>
+    <button type='submit'>Enviar</button> */}
+    {/* </form> */}
     </>
   )
 }
