@@ -6,9 +6,19 @@ import UserInfo from '../../atoms/userinfo/UserInfo';
 function Services() {
 
     const [webSelected, setWebSelected] = useState(false)
+    let [numPages, setNumPages] = useState(1)
+    let [numLanguages, setNumLanguages] = useState(1)
+
+    function handleIncrease(){
+      console.log("hola");
+      
+    }
+    function handleDecrease(){
+      console.log("adeu")
+    }
 
     const cards = data.map((item, i) =>{
-        return <Card key={i} data={item} handleClick={handleClick} webSelected={webSelected}></Card>
+        return <Card key={i} data={item} handleClick={handleClick} webSelected={webSelected} handleIncrease={handleIncrease} handleDecrease={handleDecrease} numPages={numPages} numLanguages={numLanguages}></Card>
       })
     
     let [total, setTotal] = useState(0)
