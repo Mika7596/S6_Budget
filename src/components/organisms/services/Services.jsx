@@ -8,21 +8,36 @@ function Services() {
     const [webSelected, setWebSelected] = useState(false)
     let [numPages, setNumPages] = useState(1)
     let [numLanguages, setNumLanguages] = useState(1)
+    let [total, setTotal] = useState(0)
+    let sum = 0 ;
 
-    function handleIncrease(){
-      console.log("hola");
-      
+    function handleIncrease(event){
+     
+      if(event.target.value === "incPages"){
+        setNumPages(numPages +=1)
+        setTotal(total += 30)
+      }
+
+      if(event.target.value === "incLanguages"){
+        setNumLanguages(numLanguages +=1)
+        setTotal(total += 30)
+      }
     }
-    function handleDecrease(){
-      console.log("adeu")
+    function handleDecrease(event){
+      if(event.target.value === "decPages" && numPages > 1){
+          setNumPages(numPages -=1)
+          setTotal(total -= 30)
+      }
+      if (event.target.value === "decLanguages" && numLanguages > 1){
+          setNumLanguages(numLanguages -=1)
+          setTotal(total -= 30)
+      }
     }
 
     const cards = data.map((item, i) =>{
         return <Card key={i} data={item} handleClick={handleClick} webSelected={webSelected} handleIncrease={handleIncrease} handleDecrease={handleDecrease} numPages={numPages} numLanguages={numLanguages}></Card>
       })
     
-    let [total, setTotal] = useState(0)
-    let sum = 0 ;
       
     function handleClick(event){
         

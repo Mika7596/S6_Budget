@@ -11,11 +11,11 @@ function PagesAndLanguages(props) {
           data-bs-target="#pagesHelpModal"
         >?</i>
         <span className="mb-0 mx-1 mx-sm-3">Pages</span>
-        <span className='px-2 bg-secondary bg-gradient rounded' onClick={props.handleDecrease}>-</span>
-          <span className="mx-2 border border-1 rounded px-3 fw-semibold" value="pages" >
+        <button className='px-2 bg-secondary bg-gradient rounded' onClick={props.handleDecrease}value="decPages" >-</button>
+          <span className="mx-2 border border-1 rounded px-3 fw-semibold">
             {props.numPages}
           </span>
-          <span className='px-2 bg-secondary bg-gradient rounded' onClick={props.handleIncrease}>+</span>
+          <button className='px-2 bg-secondary bg-gradient rounded' onClick={props.handleIncrease} value="incPages">+</button>
     </div>
     <div className="mb-3 d-flex align-items-center justify-content-end col-12">
         <i
@@ -25,11 +25,11 @@ function PagesAndLanguages(props) {
           data-bs-target="#pagesHelpModal"
         >?</i>
         <span className="mb-0 mx-1 mx-sm-3">Languages</span>
-        <span className='px-2 bg-secondary bg-gradient rounded' onClick={props.handleDecrease}>-</span>
+        <button className='px-2 bg-secondary bg-gradient rounded' onClick={props.handleDecrease}value="decLanguages">-</button>
           <span className="mx-2 border border-1 rounded px-3 fw-semibold" value="languages">
             {props.numLanguages}
           </span>
-          <span className='px-2 bg-secondary bg-gradient rounded' onClick={props.handleIncrease}>+</span>
+          <button className='px-2 bg-secondary bg-gradient rounded' onClick={props.handleIncrease} value="incLanguages">+</button>
     </div>
     
     </>
