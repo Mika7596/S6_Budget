@@ -17,21 +17,28 @@ function Services() {
         setNumPages(numPages +=1)
         setTotal(total += 30)
       }
-
+      
       if(event.target.value === "incLanguages"){
         setNumLanguages(numLanguages +=1)
         setTotal(total += 30)
       }
+      
+      
     }
     function handleDecrease(event){
       if(event.target.value === "decPages" && numPages > 1){
           setNumPages(numPages -=1)
           setTotal(total -= 30)
+         
       }
       if (event.target.value === "decLanguages" && numLanguages > 1){
           setNumLanguages(numLanguages -=1)
           setTotal(total -= 30)
+          
+
       }
+      
+      
     }
 
     const cards = data.map((item, i) =>{
@@ -46,13 +53,16 @@ function Services() {
         if (checkboxId === 3){
           setWebSelected(!webSelected)
         }
-
+        if(checkboxId === 3 && !event.target.checked){
+          let options = numPages + numLanguages - 2
+          setTotal(total -= options*30)
+        }
         let service = data.find(item => item.id === checkboxId)
         sum = service.price;
 
         if (event.target.checked){ 
           setTotal((total += sum))
-        } else if( !event.target.checked){
+        } else if (!event.target.checked){
           setTotal((total -= sum))
         }
     }
