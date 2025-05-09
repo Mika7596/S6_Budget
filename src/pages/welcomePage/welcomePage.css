@@ -1,3 +1,6 @@
+*{
+    animation-fill-mode: forwards; 
+}
 .welcome-main{
      display: flex; 
      height: 100vh;
@@ -11,18 +14,42 @@
     background-image: url(../../assets/header.jpg);
     border-radius: 30px;
     animation-name: container;
-    animation-duration: 3s;
-    animation-fill-mode: forwards; 
+    animation-duration: 1.5s;
     
 }
 .welcome-content{
     color: rgb(243, 243, 118);
-    font-size: 1.4em;
     margin: auto;
+    font-size: 1.5em;
     text-align: center;
 }
-
+.first-line{
+    animation-name: first;
+    animation-duration: 4s;
+}
+.second-line{
+    margin-top: 40px;
+    animation-name: second;
+    animation-duration: 6s; 
+}
+.welcome-btn{
+    margin-top: 45px;
+    animation-name: button;
+    animation-duration: 8s;  
+}
 @keyframes container {
+    from {opacity: 0}
+    to {opacity: 1;}
+}
+@keyframes first {
+    from {opacity: 0; }
+    to {opacity: 1; scale: 1.25;} 
+}
+@keyframes second {
+    from {opacity: 0;}
+    to {opacity: 1; scale: 1.2;} 
+}
+@keyframes button {
     from {opacity: 0}
     to {opacity: 1;}
 }
