@@ -1,0 +1,28 @@
+.welcome-main{
+     display: flex; 
+     height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.welcome-container{
+    width: 90%;
+    height: 90%;
+    display: flex; 
+    background-image: url(../../assets/header.jpg);
+    border-radius: 30px;
+    animation-name: container;
+    animation-duration: 3s;
+    animation-fill-mode: forwards; 
+    
+}
+.welcome-content{
+    color: rgb(243, 243, 118);
+    font-size: 1.4em;
+    margin: auto;
+    text-align: center;
+}
+
+@keyframes container {
+    from {opacity: 0}
+    to {opacity: 1;}
+}
