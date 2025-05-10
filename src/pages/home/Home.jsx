@@ -4,6 +4,7 @@ import './home.css'
 import Header from '../../components/atoms/header/Header'
 import Services from '../../components/organisms/services/Services'
 import UserInfo from '../../components/atoms/userinfo/UserInfo'
+import Footer from '../../components/atoms/footer/Footer'
 
 function Home() {
   
@@ -32,6 +33,7 @@ function Home() {
       <button type='submit'>Enviar</button>
       </form>
     </main>
+    <Footer></Footer>
     </>
   )
 }
