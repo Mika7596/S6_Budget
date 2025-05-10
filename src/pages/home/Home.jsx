@@ -23,9 +23,25 @@ function Home() {
     checkbox1.checked && selectedServices.push(checkbox1.value)
     checkbox2.checked && selectedServices.push(checkbox2.value)
     checkbox3.checked && selectedServices.push(checkbox3.value)
-    let newUser = [name.value, phone.value, email.value, selectedServices, total]
-    setUsers([...users, newUser])
-    console.log(users);
+    
+    let newUser = [name.value, phone.value, email.value, selectedServices, total];
+
+    let existingUserIndex = users.findIndex(item => item[2] === email.value);
+
+    if(existingUserIndex === -1){
+      setUsers([...users, newUser])
+    } else if (existingUserIndex !== -1){
+      let newUsersList = users.map((item, i) =>{
+        if (i === existingUserIndex){
+          return newUser
+        } else{
+          return item
+        }
+      }
+      )
+      setUsers(newUsersList)
+    }
+    
   }
 
   const userCards = users.map((item, i) => {
