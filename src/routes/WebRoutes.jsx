@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import WelcomePage from '../pages/welcomePage/WelcomePage'
 import Home from '../pages/home/Home'
-
+import NotFound from '../pages/notFound/NotFound'
 
 function WebRoutes() {
   return (
@@ -10,7 +10,7 @@ function WebRoutes() {
           <Routes>
             <Route path='/' element={<WelcomePage/>}/>
             <Route path='/calculator' element={<Home/>}/>
-            {/* <Route path='*' element={<NotFound/>}/> */}
+            <Route path='*' element={<NotFound/>}/>
           </Routes>
     </Router>
   )
