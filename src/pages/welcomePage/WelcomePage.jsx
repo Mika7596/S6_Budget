@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 function WelcomePage() {
 
   let navigate = useNavigate()
+  
   return (
     <main className='welcome-main'>
         <div className='welcome-container'>
