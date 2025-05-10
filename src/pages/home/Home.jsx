@@ -25,15 +25,15 @@ function Home() {
 
   return (
     <>
-    <Header></Header>
-    <main>
+    <header className="home-first"><Header></Header></header>
+    <main className='home-second'>
       <form onSubmit = {onSubmit}>
       <Services></Services>
       <UserInfo></UserInfo>
       <button type='submit'>Enviar</button>
       </form>
     </main>
-    <Footer></Footer>
+    <footer className='home-first'><Footer></Footer></footer>
     </>
   )
 }

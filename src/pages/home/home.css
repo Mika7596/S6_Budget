@@ -1,0 +1,14 @@
+.home-first{
+    animation-duration: 2s;
+}
+.home-second{
+    animation-duration: 4s;
+}
+.home-first, .home-second{
+    animation-name: homeanimation;
+}
+
+@keyframes homeanimation {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
