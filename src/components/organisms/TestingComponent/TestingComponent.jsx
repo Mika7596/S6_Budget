@@ -10,43 +10,28 @@ function TestingComponent() {
     const cards = data.map((item, i) =>{
         return <Card key={i} data={item} handleClick={handleClick} webSelected={webSelected}></Card>
       })
-
     
-    let selectedServices = []
     let [total, setTotal] = useState(0)
+    let sum = 0 ;
       
-      function handleClick(event){
-        let sum = 0;
-        console.log(event.target.id)
+    function handleClick(event){
+        
         let checkboxId = parseInt(event.target.id)
-        let value=parseInt(event.target.value)
 
-        
-        if (selectedServices.includes(checkboxId)){
-            selectedServices = selectedServices.filter (item => item !== checkboxId) 
-        } 
-        else if(!selectedServices.includes(checkboxId)){
-            selectedServices.push(checkboxId)
+        if (checkboxId === 3){
+          setWebSelected(!webSelected)
         }
-        
-        data.map(item => {
-            if(selectedServices.includes(item.id)) {
-                sum += item.price
-                console.log(item.price);
-            }    
-        })
 
-        console.log(selectedServices);
-        console.log(sum)
-        //setTotal(total = sum)
-        
+        let service = data.find(item => item.id === checkboxId)
+        sum = service.price;
+
+        if (event.target.checked){ 
+          setTotal((total += sum))
+        } else if( !event.target.checked){
+          setTotal((total -= sum))
+        }
     }
-
-
-
-
-
-
+  
 
   return (
     <>

@@ -1,81 +1,81 @@
 import React, { useState } from 'react'
 import {data} from '../../../assets/data/data'
 import Card from '../../atoms/card/Card'
-import './services.css'
 import UserInfo from '../../atoms/userinfo/UserInfo';
-import Total from '../../atoms/total/Total';
 
 function Services() {
-  const clients = []
-  const [webSelected, setWebSelected] = useState(false)
-  
-  const cards = data.map((item, i) =>{
-    return <Card key={i} data={item} handleClick={handleClick} webSelected={webSelected}></Card>
-  })
-  
-  let [selectedServices, setSelectedServices] = useState([])
-  let [total, setTotal] = useState(0)
-  let newSum = 0;
-console.log(total);
 
-  function handleClick (event){
-    const value = parseInt(event.target.value);
-    let myPromise = null;
-console.log(event.target.value);
+    const [webSelected, setWebSelected] = useState(false)
+    let [numPages, setNumPages] = useState(1)
+    let [numLanguages, setNumLanguages] = useState(1)
+    let [total, setTotal] = useState(0)
+    let sum = 0 ;
 
-    // if (event.target.id == "data-3"){
-    //   setWebSelected(!webSelected)
-    // }
-
-    if (event.target.checked === true){
-      newSum += value
+    function handleIncrease(event){
      
-      // myPromise = new Promise (function (resolve) {
-      //   setSelectedServices([...selectedServices, value]);
-      //   newSum = selectedServices.reduce((acc, p) =>{ return acc + p}, 0);
-      //   resolve(newSum)  
-      // })
+      if(event.target.value === "incPages"){
+        setNumPages(numPages +=1)
+        setTotal(total += 30)
+      }
       
-    } else if (event.target.checked === false){
-      newSum -= value;
-      setWebSelected(false)
+      if(event.target.value === "incLanguages"){
+        setNumLanguages(numLanguages +=1)
+        setTotal(total += 30)
+      }
       
-      // myPromise = new Promise(function (resolve){
-      //   const filteredList = selectedServices.filter (item => item !== value)
-      //   setSelectedServices(filteredList)
-      //   newSum = selectedServices.reduce((acc, p) =>{ return acc + p}, 0);
-      //   resolve(newSum)
-      //   document.getElementById("priceBox").innerText = `El valor total és ${newSum}`
-      // })
+      
     }
-    // myPromise.then(newSum => {setTotal(newSum)})
-    // document.getElementById("priceBox").innerText = `El valor total és ${newSum}`
-    setTotal(newSum)
-    //console.log(total)
-  }
+    function handleDecrease(event){
+      if(event.target.value === "decPages" && numPages > 1){
+          setNumPages(numPages -=1)
+          setTotal(total -= 30)
+         
+      }
+      if (event.target.value === "decLanguages" && numLanguages > 1){
+          setNumLanguages(numLanguages -=1)
+          setTotal(total -= 30)
+          
 
-  function onSubmit(e){
-    e.preventDefault();
-    const {checkbox1, checkbox2, checkbox3, name, phone, email} = e.target
-    const checkboxList = [[checkbox1, 1], [checkbox2, 2], [checkbox3,3]]
-    const selectedServices = [];
-    checkboxList.map(item => {
-      item[0].checked && selectedServices.push(item[1])
-    })
-    clients.push([name.value, phone.value, email.value, selectedServices])
-    console.log(clients)
-  }
+      }
+      
+      
+    }
 
+    const cards = data.map((item, i) =>{
+        return <Card key={i} data={item} handleClick={handleClick} webSelected={webSelected} handleIncrease={handleIncrease} handleDecrease={handleDecrease} numPages={numPages} numLanguages={numLanguages}></Card>
+      })
+    
+      
+    function handleClick(event){
+        
+        let checkboxId = parseInt(event.target.id)
+
+        if (checkboxId === 3){
+          setWebSelected(!webSelected)
+        }
+        if(checkboxId === 3 && !event.target.checked){
+          let options = numPages + numLanguages - 2
+          setTotal(total -= options*30)
+        }
+        let service = data.find(item => item.id === checkboxId)
+        sum = service.price;
+
+        if (event.target.checked){ 
+          setTotal((total += sum))
+        } else if (!event.target.checked){
+          setTotal((total -= sum))
+        }
+    }
+  
 
   return (
     <>
-    <form onSubmit={onSubmit}>
+    {/* <form> */}
     {cards}
     <div className='col-10'><h3 className='text-end' id='priceBox'>Total = {total}</h3></div>
-    <Total total={total}></Total>
-    <UserInfo></UserInfo>
-    <button type='submit'>Enviar</button>
-    </form>
+    {/* <UserInfo></UserInfo>
+    <button type='submit'>Enviar</button> */}
+    {/* </form> */}
     </>
   )
 }

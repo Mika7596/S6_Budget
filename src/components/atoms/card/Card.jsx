@@ -6,7 +6,7 @@ function Card(props) {
     const displayLanguages = <div className='row mt-3'>
         <div className='col-12 mt-3'>
             <div className='col-12 px-0 px-md-3'>
-                <PagesAndLanguages></PagesAndLanguages>
+                <PagesAndLanguages handleIncrease={props.handleIncrease} handleDecrease={props.handleDecrease} numPages={props.numPages} numLanguages={props.numLanguages}></PagesAndLanguages>
             </div>
         </div>
     </div>
