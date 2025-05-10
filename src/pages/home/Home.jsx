@@ -13,6 +13,9 @@ function Home() {
   let selectedServices = [];
   let [total, setTotal] = useState(0)
 
+  function getTotal(t){
+    setTotal(t)
+  }
   function onSubmit(event){
     event.preventDefault();
 
@@ -20,14 +23,14 @@ function Home() {
     checkbox1.checked && selectedServices.push(checkbox1.value)
     checkbox2.checked && selectedServices.push(checkbox2.value)
     checkbox3.checked && selectedServices.push(checkbox3.value)
-    setUsers([name.value, phone.value, email.value, selectedServices])
+    let newUser = [name.value, phone.value, email.value, selectedServices, total]
+    setUsers([...users, newUser])
     console.log(users);
   }
 
-  function getTotal(t){
-    setTotal(t)
-  }
-
+  const userCards = users.map((item, i) => {
+    return <UserCard key={i} name={item[0]} phone={item[1]} email={item[2]} services={item[3].join(" - ")} total={item[4]}></UserCard>
+  })
 
   return (
     <>
@@ -39,7 +42,7 @@ function Home() {
       <button type='submit'>Enviar</button>
       </form>
     </main>
-    <UserCard username={users[0]} phone={users[1]} email={users[2]} selectedServices={users[3]}total={total}></UserCard>
+    {users && userCards}
     <footer className='home-first'><Footer></Footer></footer>
     </>
   )
