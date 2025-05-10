@@ -11,17 +11,6 @@ function Card(props) {
         </div>
     </div>
 
-
-    // {isWebSelected && data.id === 3 && (
-    //     <div className="row mt-3">
-    //         <div className="col-12 px-0 px-md-3">
-    //             <div className="web-configurator">
-    //                 <WebConfigurator webConfig={webConfig} onConfigChange={onConfigChange} />
-    //             </div>
-    //         </div>
-    //     </div>
-    // )}
-
   return (
     <div className={`card rounded-4 shadow mb-3 p-4 col-10 m-auto`}>
       <div className="row g-3 align-items-center">
