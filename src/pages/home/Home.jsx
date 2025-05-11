@@ -12,18 +12,47 @@ import SortingButtons from '../../components/atoms/sortingButtons/SortingButtons
 function Home() {
   
   let [users, setUsers] = useState([]);
+  let [filteredList, setFilteredList] = useState([])
   let selectedServices = [];
-  let [total, setTotal] = useState(0)
+  let [total, setTotal] = useState(0);
 
 
   function getTotal(t){
     setTotal(t)
   }
 
-  function getSortedList(sortedList){
-    setUsers(sortedList)
-    
+  function getSortingValue(...value){
+    let newList = []
+    if (value[0] === "name"){
+      newList = [...users]
+      newList.sort(function (a, b) {
+            if (a[0] < b[0]) {
+              return -1;
+            }
+            if (a[0] > b[0]) {
+              return 1;
+            }
+            return 0;
+          });
+      if(value[1] === true){
+        newList.reverse()
+      }
+    } 
+    else if (value[0] === "date"){
+      newList = [...users]
+      newList.reverse();
+    }
+    setUsers(newList)
   }
+
+  function getSearchingValue(value){
+    let newList = users.filter(item => item[0].includes(value));
+    setFilteredList(newList)
+  }
+
+  const filteredCards = filteredList.map((item, i) => {
+    return <UserCard key={i} name={item[0]} phone={item[1]} email={item[2]} services={item[3].join(" - ")} total={item[4]}></UserCard>
+  })
 
   function onSubmit(event){
     event.preventDefault();
@@ -67,8 +96,8 @@ function Home() {
       <button type='submit'>Enviar</button>
       </form>
     </main>
-    {users.length > 0 && <SortingButtons users={users} getSortedList={getSortedList}></SortingButtons>}
-    {users.length > 0 && userCards}
+    {users.length > 0 && <SortingButtons users={users} getSortingValue={getSortingValue} getSearchingValue={getSearchingValue}></SortingButtons>}
+    {filteredList.length > 0 ? filteredCards : users.length > 0 && userCards}
     <footer className='home-first'><Footer></Footer></footer>
     </>
   )
