@@ -6,6 +6,8 @@ import Services from '../../components/organisms/services/Services'
 import UserInfo from '../../components/atoms/userForm/UserInfo'
 import Footer from '../../components/atoms/footer/Footer'
 import UserCard from '../../components/atoms/userCard/UserCard'
+import SortingButtons from '../../components/atoms/sortingButtons/SortingButtons'
+
 
 function Home() {
   
@@ -13,9 +15,16 @@ function Home() {
   let selectedServices = [];
   let [total, setTotal] = useState(0)
 
+
   function getTotal(t){
     setTotal(t)
   }
+
+  function getSortedList(sortedList){
+    setUsers(sortedList)
+    
+  }
+
   function onSubmit(event){
     event.preventDefault();
 
@@ -58,7 +67,8 @@ function Home() {
       <button type='submit'>Enviar</button>
       </form>
     </main>
-    {users && userCards}
+    {users.length > 0 && <SortingButtons users={users} getSortedList={getSortedList}></SortingButtons>}
+    {users.length > 0 && userCards}
     <footer className='home-first'><Footer></Footer></footer>
     </>
   )
