@@ -3,9 +3,15 @@ import React, {useState} from 'react'
 function SortingButtons(props) {
     let [isDateAsc, setIsDateAsc] = useState(false)
     let [isNameAsc, setIsNameAsc] = useState(false)
-    const [sortedList, setSortedList] = useState(props.users)
+    const data = props.users
+    
+    let [sortedList, setSortedList] = useState(data)
     
     function handleSortName(){
+        console.log(props.users)
+        console.log(data);
+        
+        //setSortedList([...data]);
         console.log(sortedList);
         
         let newList = [...sortedList]
@@ -25,18 +31,17 @@ function SortingButtons(props) {
             newList.reverse();
             setSortedList(newList)
         }
-        setIsNameAsc(!isNameAsc);
         console.log(newList);
+        
+        // setSortedList(newList)
+        setIsNameAsc(!isNameAsc);
         props.getSortedList(sortedList)
     }
 
     function handleSortDate(){
         let newList = [...sortedList]
-        console.log(sortedList);
         newList.reverse();
         setSortedList(newList)
-        console.log(newList);
-        
         setIsDateAsc(!isDateAsc)
         props.getSortedList(sortedList)
     }
