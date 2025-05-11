@@ -38,7 +38,7 @@ function SortingButtons(props) {
         console.log(newList);
         
         setIsDateAsc(!isDateAsc)
-       // props.getSortedList(sortedList)
+        props.getSortedList(sortedList)
     }
 
 
