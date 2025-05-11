@@ -7,6 +7,7 @@ import UserInfo from '../../components/atoms/userForm/UserInfo'
 import Footer from '../../components/atoms/footer/Footer'
 import UserCard from '../../components/atoms/userCard/UserCard'
 import SortingButtons from '../../components/atoms/sortingButtons/SortingButtons'
+import DiscountToggle from '../../components/atoms/discountToggle/DiscountToggle'
 
 
 function Home() {
@@ -47,6 +48,9 @@ function Home() {
 
   function getSearchingValue(value){
     let newList = users.filter(item => item[0].includes(value));
+    if(newList.length === 0){
+      alert("No consta cap usuari amb el nom introduït")
+    }
     setFilteredList(newList)
   }
 
@@ -90,6 +94,7 @@ function Home() {
     <>
     <header className="home-first"><Header></Header></header>
     <main className='home-second'>
+      <DiscountToggle></DiscountToggle>
       <form onSubmit = {onSubmit}>
       <Services getTotal={getTotal}></Services>
       <UserInfo></UserInfo>

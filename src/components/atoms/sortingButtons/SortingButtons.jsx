@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 function SortingButtons(props) {
     let [isDateAsc, setIsDateAsc] = useState(false)
     let [isNameAsc, setIsNameAsc] = useState(false)
-    let [searchbarValue, setSearchbarValue] = useState("")
+    
     
     function handleSortName(){
         
