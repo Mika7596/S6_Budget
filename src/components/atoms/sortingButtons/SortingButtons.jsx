@@ -40,9 +40,6 @@ function SortingButtons(props) {
                 Nom
                 <i className={`bi ${isNameAsc ? "bi-caret-down" : "bi-caret-up"} ms-2 text-secondary`} onClick={handleSortName}></i>
             </p>
-            <p className="px-3 text-danger mb-0" type="button" >
-                Reset
-            </p>
         </div>
   )
 }

@@ -8,6 +8,10 @@
     animation-name: homeanimation;
 }
 
+.form{
+    text-align: center;
+}
+
 @keyframes homeanimation {
     from{opacity: 0;}
     to{opacity: 1;}

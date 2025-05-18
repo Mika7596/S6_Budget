@@ -105,10 +105,10 @@ function Home() {
     <header className="home-first"><Header></Header></header>
     <main className='home-second'>
       <DiscountToggle discountActive={discountActive}></DiscountToggle>
-      <form onSubmit = {onSubmit}>
+      <form onSubmit = {onSubmit} className='form'>
       <Services getTotal={getTotal} discount={discount}></Services>
       <UserInfo></UserInfo>
-      <button type='submit'>Enviar</button>
+      <button type='submit' className='btn btn-success rounded'>Enviar</button>
       </form>
     </main>
     {users.length > 0 && <SortingButtons users={users} getSortingValue={getSortingValue} getSearchingValue={getSearchingValue}></SortingButtons>}

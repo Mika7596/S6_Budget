@@ -21,12 +21,12 @@ function Card(props) {
                 </div>
 
                 
-                <div className="col-6 col-md-3 text-md-end">
+                <div className="col-6 col-md-3 text-center text-md-end">
                     <h2 className="mb-0">{props.data.price}€</h2>
                 </div>
 
                 
-                <div className="col-6 col-md-3">
+                <div className="col-6 col-md-3 text-center">
                     <div className="d-flex align-items-center justify-content-end">
                         <input
                             className="form-check-input me-2 border-success"
