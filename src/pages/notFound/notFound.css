@@ -1,0 +1,25 @@
+.notFound-first, .notFound-second, .notFound-third, .notFound-fourth, .notFound-fifth{
+    animation-name: notfound;
+}
+
+.notFound-first{
+    animation-duration: 2s; 
+}
+.notFound-second, .notFound-fifth {
+    animation-duration: 4s;
+}
+.notFound-third{
+    animation-duration: 6s;
+}
+.notFound-fourth{
+    animation-duration: 8s;
+}
+.notFound-fifth{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+@keyframes notfound {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}

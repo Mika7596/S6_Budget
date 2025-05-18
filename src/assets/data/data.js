@@ -4,20 +4,20 @@ export const data = [
         id: 1,
         description: "Programació d'una web responsive completa",
         price: 300,
-        selected: false
+        priceWithDiscount : 240
     },
     {
         title: 'Ads',
         id: 2,
         description: "Programació d'una web responsive completa",
         price: 400,
-        selected: false
+        priceWithDiscount: 320
     },
     {
         title: 'Web',
         id: 3,
         description: "Programació d'una web responsive completa",
         price: 500,
-        selected: false
+        priceWithDiscount: 400
     }
 ]
