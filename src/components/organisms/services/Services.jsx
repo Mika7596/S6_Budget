@@ -12,6 +12,7 @@ function Services(props) {
     let sum = 0 ;
 
     function sendTotalValue(){
+
       props.getTotal(total)
     }
 
@@ -43,7 +44,7 @@ function Services(props) {
     }
 
     const cards = data.map((item, i) =>{
-        return <Card key={i} data={item} handleClick={handleClick} webSelected={webSelected} handleIncrease={handleIncrease} handleDecrease={handleDecrease} numPages={numPages} numLanguages={numLanguages}></Card>
+        return <Card key={i} data={item} discount = {props.discount} handleClick={handleClick} webSelected={webSelected} handleIncrease={handleIncrease} handleDecrease={handleDecrease} numPages={numPages} numLanguages={numLanguages}></Card>
       })
     
       
@@ -59,7 +60,13 @@ function Services(props) {
           setTotal(total -= options*30)
         }
         let service = data.find(item => item.id === checkboxId)
-        sum = service.price;
+        if(props.discount){
+          sum = service.price*0.8;
+
+        } else{
+
+          sum = service.price;
+        }
 
         if (event.target.checked){ 
           setTotal((total += sum))

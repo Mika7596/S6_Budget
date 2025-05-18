@@ -16,10 +16,16 @@ function Home() {
   let [filteredList, setFilteredList] = useState([])
   let selectedServices = [];
   let [total, setTotal] = useState(0);
+  let [discount, setDiscount] = useState(false);
 
 
   function getTotal(t){
-    setTotal(t)
+    if (discount === true){
+      setTotal(t*0.8)
+      
+    }else if (discount === false){
+      setTotal(t)
+    }
   }
 
   function getSortingValue(...value){
@@ -86,6 +92,10 @@ function Home() {
     
   }
 
+  function discountActive (value){
+      setDiscount(discount = value)
+  }
+
   const userCards = users.map((item, i) => {
     return <UserCard key={i} name={item[0]} phone={item[1]} email={item[2]} services={item[3].join(" - ")} total={item[4]}></UserCard>
   })
@@ -94,9 +104,9 @@ function Home() {
     <>
     <header className="home-first"><Header></Header></header>
     <main className='home-second'>
-      <DiscountToggle></DiscountToggle>
+      <DiscountToggle discountActive={discountActive}></DiscountToggle>
       <form onSubmit = {onSubmit}>
-      <Services getTotal={getTotal}></Services>
+      <Services getTotal={getTotal} discount={discount}></Services>
       <UserInfo></UserInfo>
       <button type='submit'>Enviar</button>
       </form>
